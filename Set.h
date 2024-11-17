@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
+#include <sstream>
 using namespace std;
 
-template <typename T>
+template<typename T>
 class Set {
 private:
 	T* content;
@@ -125,7 +126,7 @@ public:
 			return false;
 		}
 	}
-	bool operator!=(Set& set); {
+	/*bool operator!=(Set& set); {
 		if (len == set.len) {
 			for (int i = 0; i < len; i++) {
 				if (!set.contains(content[i])) {
@@ -137,16 +138,15 @@ public:
 		else {
 			return true;
 		}
-	}
+	}*/
 	
-	friend ostream& operator<<(ostream& os, const Set& dt) {
+	friend ostream& operator<<(ostream& os, const Set& set) {
 		stringstream ss;
 		for (int i = 0; i < set.len; i++) {
 			ss << set.content[i] << '\t';
 		}
-		ss << endl;
 		return os << ss.str();
 	}
-	//friend ostream& operator>>(ostream& os, const Set& dt);
 	
 };
+

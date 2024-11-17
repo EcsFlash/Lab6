@@ -33,202 +33,6 @@ void pause() {
     } while (flag);
 }
 
-void method1(Set& set) {
-    cout << "Enter element to add" << endl;
-    int el;
-    cin >> el;
-    set.add(el);
-}
-void method2(Set& set) {
-    cout << "Enter element to remove" << endl;
-    int el;
-    cin >> el;
-    set.remove(el);
-   
-}
-void method3(Set& set) {
-   cout << "AND OPERATION" << endl;
-   int len;
-   int* a = new int[0];
-   //float X, Y, Z;
-   int way = 0;
-   
-   cout << "How do you want to create second Set?" << endl;
-   cout << "1. Enter it len and content" << endl;
-   cout << "2. Start automatically with empty set" << endl;
-   cout << "Enter 1 or 2" << endl;
-   cin >> way;
-   system("cls");
-   printLogo();
-   cout << "AND OPERATION" << endl;
-   bool flag = false;
-   while (!flag) {
-       switch (way)
-       {
-       case 1:
-           cout << "Enter len, than content by space" << endl;
-           //cin >> X >> Y >> Z;
-           cin >> len;
-           a = new int[len];
-           for (int i = 0; i < len; i++) {
-               cin >> a[i];
-           }
-           flag = true;
-           break;
-       case 2:
-           flag = true;
-           break;
-       default:
-           cout << "Try again later" << endl;
-           int o = 1;
-           while (o != 0) {
-               cout << "Enter 0 if you want to Escape from the Set" << endl;
-               cin >> o;
-           }
-           return;
-           break;
-       }
-   }
-   //Vector3D vector = Vector3D();
-   Set set2;
-   switch (way)
-   {
-   case 1:
-       //vector = Vector3D(X, Y, Z);
-       set2 = Set(a, len);
-       break;
-   case 2:
-       break;
-   default:
-       break;
-   }
-   cout << set.And(set2);
-   pause();
-}
-void method4(Set& set) {
-    cout << "OR OPERATION" << endl;
-    int len;
-    int* a = new int[0];
-    //float X, Y, Z;
-    int way = 0;
-
-    cout << "How do you want to create second Set?" << endl;
-    cout << "1. Enter it len and content" << endl;
-    cout << "2. Start automatically with empty set" << endl;
-    cout << "Enter 1 or 2" << endl;
-    cin >> way;
-    system("cls");
-    printLogo();
-    cout << "OR OPERATION" << endl;
-    bool flag = false;
-    while (!flag) {
-        switch (way)
-        {
-        case 1:
-            cout << "Enter len, than content by space" << endl;
-            //cin >> X >> Y >> Z;
-            cin >> len;
-            a = new int[len];
-            for (int i = 0; i < len; i++) {
-                cin >> a[i];
-            }
-            flag = true;
-            break;
-        case 2:
-            flag = true;
-            break;
-        default:
-            cout << "Try again later" << endl;
-            int o = 1;
-            while (o != 0) {
-                cout << "Enter 0 if you want to Escape from the Set" << endl;
-                cin >> o;
-            }
-            return;
-            break;
-        }
-    }
-    //Vector3D vector = Vector3D();
-    Set<int> set2;
-    switch (way)
-    {
-    case 1:
-        //vector = Vector3D(X, Y, Z);
-        set2 = Set<int>(a, len);
-        break;
-    case 2:
-        break;
-    default:
-        break;
-    }
-    cout << set.Or(set2);
-    pause();
-}
-void method5(Set& set) {
-    cout << "COMPARE OPERATION" << endl;
-    int len;
-    int* a = new int[0];
-    //float X, Y, Z;
-    int way = 0;
-
-    cout << "How do you want to create second Set?" << endl;
-    cout << "1. Enter it len and content" << endl;
-    cout << "2. Start automatically with empty set" << endl;
-    cout << "Enter 1 or 2" << endl;
-    cin >> way;
-    system("cls");
-    printLogo();
-    cout << "COMPARE OPERATION" << endl;
-    bool flag = false;
-    while (!flag) {
-        switch (way)
-        {
-        case 1:
-            cout << "Enter len, than content by space" << endl;
-            //cin >> X >> Y >> Z;
-            cin >> len;
-            a = new int[len];
-            for (int i = 0; i < len; i++) {
-                cin >> a[i];
-            }
-            flag = true;
-            break;
-        case 2:
-            flag = true;
-            break;
-        default:
-            cout << "Try again later" << endl;
-            int o = 1;
-            while (o != 0) {
-                cout << "Enter 0 if you want to Escape from the Set" << endl;
-                cin >> o;
-            }
-            return;
-            break;
-        }
-    }
-    //Vector3D vector = Vector3D();
-    Set<int> set2;
-    switch (way)
-    {
-    case 1:
-        //vector = Vector3D(X, Y, Z);
-        set2 = Set<int>(a, len);
-        break;
-    case 2:
-        break;
-    default:
-        break;
-    }
-    if (set == set2) {
-        cout << "They are equal" << endl;
-    }
-    else {
-        cout << "They are not equal" << endl;
-    }
-    pause();
-}
-
 
 
 void showMenu() {
@@ -247,6 +51,7 @@ int main() {
     int len;
     int* a = nullptr;
     int way = 0;
+    bool flag2;
     cout << "Let's start!" << endl;
     cout << "How do you want to create Set?" << endl;
     cout << "1. Enter it len and content" << endl;
@@ -285,6 +90,8 @@ int main() {
     }
     ////Vector3D vector = Vector3D();
     Set<int> set;
+    Set<int> set2;
+    int way2 = 0;
     switch (way)
     {
     case 1:
@@ -297,7 +104,7 @@ int main() {
     default:
         break;
     }
-
+    int el;
     system("cls");
     int choice = 0;
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -317,34 +124,32 @@ int main() {
         switch (choice) {
         case 1:
             cout << "Enter element to add" << endl;
-            int el;
+            
             cin >> el;
             set.add(el);
             break;
         case 2:
             cout << "Enter element to remove" << endl;
-            int el;
+            
             cin >> el;
             set.remove(el);
             break;
         case 3:
             cout << "AND OPERATION" << endl;
-            int len;
-            int* a = new int[0];
+            //a = new int[0];
             //float X, Y, Z;
-            int way = 0;
 
             cout << "How do you want to create second Set?" << endl;
             cout << "1. Enter it len and content" << endl;
             cout << "2. Start automatically with empty set" << endl;
             cout << "Enter 1 or 2" << endl;
-            cin >> way;
+            cin >> way2;
             system("cls");
             printLogo();
             cout << "AND OPERATION" << endl;
-            bool flag = false;
-            while (!flag) {
-                switch (way)
+            flag2 = false;
+            while (!flag2) {
+                switch (way2)
                 {
                 case 1:
                     cout << "Enter len, than content by space" << endl;
@@ -354,10 +159,10 @@ int main() {
                     for (int i = 0; i < len; i++) {
                         cin >> a[i];
                     }
-                    flag = true;
+                    flag2 = true;
                     break;
                 case 2:
-                    flag = true;
+                    flag2 = true;
                     break;
                 default:
                     cout << "Try again later" << endl;
@@ -366,72 +171,12 @@ int main() {
                         cout << "Enter 0 if you want to Escape from the Set" << endl;
                         cin >> o;
                     }
-                    return;
                     break;
                 }
             }
             //Vector3D vector = Vector3D();
-            Set set2;
-            switch (way)
-            {
-            case 1:
-                //vector = Vector3D(X, Y, Z);
-                set2 = Set(a, len);
-                break;
-            case 2:
-                break;
-            default:
-                break;
-            }
-            cout << set.And(set2);
-            pause();
-            break;
-        case 4:
-            cout << "OR OPERATION" << endl;
-            int len;
-            int* a = new int[0];
-            //float X, Y, Z;
-            int way = 0;
-
-            cout << "How do you want to create second Set?" << endl;
-            cout << "1. Enter it len and content" << endl;
-            cout << "2. Start automatically with empty set" << endl;
-            cout << "Enter 1 or 2" << endl;
-            cin >> way;
-            system("cls");
-            printLogo();
-            cout << "OR OPERATION" << endl;
-            bool flag = false;
-            while (!flag) {
-                switch (way)
-                {
-                case 1:
-                    cout << "Enter len, than content by space" << endl;
-                    //cin >> X >> Y >> Z;
-                    cin >> len;
-                    a = new int[len];
-                    for (int i = 0; i < len; i++) {
-                        cin >> a[i];
-                    }
-                    flag = true;
-                    break;
-                case 2:
-                    flag = true;
-                    break;
-                default:
-                    cout << "Try again later" << endl;
-                    int o = 1;
-                    while (o != 0) {
-                        cout << "Enter 0 if you want to Escape from the Set" << endl;
-                        cin >> o;
-                    }
-                    return;
-                    break;
-                }
-            }
-            //Vector3D vector = Vector3D();
-            Set<int> set2;
-            switch (way)
+            
+            switch (way2)
             {
             case 1:
                 //vector = Vector3D(X, Y, Z);
@@ -442,27 +187,26 @@ int main() {
             default:
                 break;
             }
-            cout << set.Or(set2);
-            pause();
+            set = set.And(set2);
+            //pause();
             break;
-        case 5:
-            cout << "COMPARE OPERATION" << endl;
-            int len;
-            int* a = new int[0];
+        case 4:
+            cout << "OR OPERATION" << endl;
+            //a = new int[0];
             //float X, Y, Z;
-            int way = 0;
+            
 
             cout << "How do you want to create second Set?" << endl;
             cout << "1. Enter it len and content" << endl;
             cout << "2. Start automatically with empty set" << endl;
             cout << "Enter 1 or 2" << endl;
-            cin >> way;
+            cin >> way2;
             system("cls");
             printLogo();
-            cout << "COMPARE OPERATION" << endl;
-            bool flag = false;
-            while (!flag) {
-                switch (way)
+            cout << "OR OPERATION" << endl;
+            flag2 = false;
+            while (!flag2) {
+                switch (way2)
                 {
                 case 1:
                     cout << "Enter len, than content by space" << endl;
@@ -472,10 +216,10 @@ int main() {
                     for (int i = 0; i < len; i++) {
                         cin >> a[i];
                     }
-                    flag = true;
+                    flag2 = true;
                     break;
                 case 2:
-                    flag = true;
+                    flag2 = true;
                     break;
                 default:
                     cout << "Try again later" << endl;
@@ -484,13 +228,67 @@ int main() {
                         cout << "Enter 0 if you want to Escape from the Set" << endl;
                         cin >> o;
                     }
-                    return;
                     break;
                 }
             }
             //Vector3D vector = Vector3D();
-            Set<int> set2;
-            switch (way)
+            switch (way2)
+            {
+            case 1:
+                //vector = Vector3D(X, Y, Z);
+                set2 = Set<int>(a, len);
+                break;
+            case 2:
+                break;
+            default:
+                break;
+            }
+            set = set.Or(set2);
+            //pause();
+            break;
+        case 5:
+            cout << "COMPARE OPERATION" << endl;
+            //a = new int[0];
+            //float X, Y, Z;
+
+            cout << "How do you want to create second Set?" << endl;
+            cout << "1. Enter it len and content" << endl;
+            cout << "2. Start automatically with empty set" << endl;
+            cout << "Enter 1 or 2" << endl;
+            cin >> way2;
+            system("cls");
+            printLogo();
+            cout << "COMPARE OPERATION" << endl;
+            flag2 = false;
+            while (!flag2) {
+                switch (way2)
+                {
+                case 1:
+                    cout << "Enter len, than content by space" << endl;
+                    //cin >> X >> Y >> Z;
+                    cin >> len;
+                    a = new int[len];
+                    for (int i = 0; i < len; i++) {
+                        cin >> a[i];
+                    }
+                    flag2 = true;
+                    break;
+                case 2:
+                    flag2 = true;
+                    break;
+                default:
+                    cout << "Try again later" << endl;
+                    int o = 1;
+                    while (o != 0) {
+                        cout << "Enter 0 if you want to Escape from the Set" << endl;
+                        cin >> o;
+                    }
+                    
+                    break;
+                }
+            }
+            //Vector3D vector = Vector3D();
+            switch (way2)
             {
             case 1:
                 //vector = Vector3D(X, Y, Z);

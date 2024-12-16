@@ -42,6 +42,8 @@ void showMenu() {
     cout << "3. And with another set" << endl;
     cout << "4. Or with another set" << endl;
     cout << "5. Compare two sets" << endl;
+    cout << "6. Without set" << endl;
+    cout << "7. is subset of another set?" << endl;
     cout << "0. Exit" << endl;
 }
 
@@ -187,7 +189,7 @@ int main() {
             default:
                 break;
             }
-            set = set.And(set2);
+            set = set.Intersection(set2);
             //pause();
             break;
         case 4:
@@ -243,7 +245,7 @@ int main() {
             default:
                 break;
             }
-            set = set.Or(set2);
+            set = set.Union(set2);
             //pause();
             break;
         case 5:
@@ -308,7 +310,116 @@ int main() {
             pause();
             break;
         case 6:
-            cout << set << endl;
+            cout << "WITHOUT OPERATION" << endl;
+            //a = new int[0];
+            //float X, Y, Z;
+
+
+            cout << "How do you want to create second Set?" << endl;
+            cout << "1. Enter it len and content" << endl;
+            cout << "2. Start automatically with empty set" << endl;
+            cout << "Enter 1 or 2" << endl;
+            cin >> way2;
+            system("cls");
+            printLogo();
+            cout << "WITHOUT OPERATION" << endl;
+            flag2 = false;
+            while (!flag2) {
+                switch (way2)
+                {
+                case 1:
+                    cout << "Enter len, than content by space" << endl;
+                    //cin >> X >> Y >> Z;
+                    cin >> len;
+                    a = new int[len];
+                    for (int i = 0; i < len; i++) {
+                        cin >> a[i];
+                    }
+                    flag2 = true;
+                    break;
+                case 2:
+                    flag2 = true;
+                    break;
+                default:
+                    cout << "Try again later" << endl;
+                    int o = 1;
+                    while (o != 0) {
+                        cout << "Enter 0 if you want to Escape from the Set" << endl;
+                        cin >> o;
+                    }
+                    break;
+                }
+            }
+            //Vector3D vector = Vector3D();
+            switch (way2)
+            {
+            case 1:
+                //vector = Vector3D(X, Y, Z);
+                set2 = Set<int>(a, len);
+                break;
+            case 2:
+                break;
+            default:
+                break;
+            }
+            set = set.Without(set2);
+            //pause();
+            break;
+        case 7:
+            cout << "is subset os other set?" << endl;
+            //a = new int[0];
+            //float X, Y, Z;
+
+
+            cout << "How do you want to create second Set?" << endl;
+            cout << "1. Enter it len and content" << endl;
+            cout << "2. Start automatically with empty set" << endl;
+            cout << "Enter 1 or 2" << endl;
+            cin >> way2;
+            system("cls");
+            printLogo();
+            cout << "is subset os other set?" << endl;
+            flag2 = false;
+            while (!flag2) {
+                switch (way2)
+                {
+                case 1:
+                    cout << "Enter len, than content by space" << endl;
+                    //cin >> X >> Y >> Z;
+                    cin >> len;
+                    a = new int[len];
+                    for (int i = 0; i < len; i++) {
+                        cin >> a[i];
+                    }
+                    flag2 = true;
+                    break;
+                case 2:
+                    flag2 = true;
+                    break;
+                default:
+                    cout << "Try again later" << endl;
+                    int o = 1;
+                    while (o != 0) {
+                        cout << "Enter 0 if you want to Escape from the Set" << endl;
+                        cin >> o;
+                    }
+                    break;
+                }
+            }
+            //Vector3D vector = Vector3D();
+            switch (way2)
+            {
+            case 1:
+                //vector = Vector3D(X, Y, Z);
+                set2 = Set<int>(a, len);
+                break;
+            case 2:
+                break;
+            default:
+                break;
+            }
+            cout << boolalpha << set.isSubsetOf(set2) << endl;
+            pause();
             break;
         case 0:
             cout << "Leaving the programm." << endl;

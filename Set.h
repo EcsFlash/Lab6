@@ -8,7 +8,7 @@ class Set {
 private:
 	T* content;
 	int len;
-	bool contains(T el) {
+	bool contains(T el) const {
 		for (int i = 0; i < len; i++) {
 			if (content[i] == el) {
 				return true;
@@ -40,7 +40,7 @@ public:
 		delete[] content;
 		content = nullptr;
 	}
-	void add(T el) {
+	void add(const T el) {
 		if (!contains(el)) {
 			len += 1;
 			T* temp = new T[len - 1];
@@ -57,7 +57,7 @@ public:
 			delete[] temp;
 		}
 	}
-	void remove(T el) {
+	void remove(const T el) {
 		if (contains(el)) {
 			T* temp = new T[len];
 			len--;
@@ -76,7 +76,7 @@ public:
 			delete[] temp;
 		}
 	}
-	Set And(Set& set) {
+	Set Intersection(const Set& set) {
 		Set temp;
 		if (len >= set.len) {
 			for (int i = 0; i < len; i++) {
@@ -95,7 +95,31 @@ public:
 
 		return temp;
 	}
-	Set Or(Set& set) {
+	bool isSubsetOf(const Set& set) {
+		for (int i = 0; i < len; i++) {
+			if (!set.contains(content[i])) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	Set Complement(const Set& A, const Set& B) {
+		return B.Without(A);
+	}
+
+	Set Without(const Set& set) {
+		Set temp;
+		for (int i = 0; i < len; i++) {
+			if (!set.contains(content[i])) {
+				temp.add(content[i]);
+			}
+		}
+		return temp;
+	}
+	//разность, дополнение, на список
+
+	Set Union(const Set& set) {
 		Set temp;
 		for (int i = 0; i < len; i++) {
 			temp.add(content[i]);
@@ -113,7 +137,7 @@ public:
 		}
 		return *this;
 	}
-	bool operator==(Set& set) {
+	bool operator==(const Set& set) {
 		if (len == set.len) {
 			for (int i = 0; i < len; i++) {
 				if (!set.contains(content[i])) {
